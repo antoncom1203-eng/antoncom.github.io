@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /index.html
+Allow: /public.html
+Disallow: /private.html
