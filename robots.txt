@@ -2,4 +2,4 @@ User-agent: *
 Allow: /index.html
 Allow: /public.html
 Disallow: /private.html
-Sitemap: https://твій-нік.github.io/lab3-site/sitemap.xml
+Sitemap: https://antoncom1203-eng.github.io/antoncom.github.io/sitemap.xml
