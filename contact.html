@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Контактна форма</title>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      line-height: 1.6;
+      padding: 0 20px;
+    }
+    form {
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    input, textarea {
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+    button {
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+    #status {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Контактна форма</h1>
+  <p>Ця сторінка використовується для демонстрації захисту від автоматизованих ботів за допомогою reCAPTCHA.</p>
+
+  <form id="contactForm">
+    <label for="name">Ім’я</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="message">Повідомлення</label>
+    <textarea id="message" name="message" rows="5" required></textarea>
+
+    <div class="g-recaptcha" data-sitekey="ТУТ_ТВІЙ_SITE_KEY"></div>
+
+    <button type="submit">Надіслати</button>
+    <div id="status"></div>
+  </form>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const recaptchaResponse = grecaptcha.getResponse();
+      const status = document.getElementById('status');
+
+      if (!recaptchaResponse) {
+        status.textContent = 'Підтвердіть, що ви не робот.';
+        return;
+      }
+
+      status.textContent = 'reCAPTCHA пройдена. На GitHub Pages це демонстраційна перевірка без серверної валідації.';
+    });
+  </script>
+</body>
+</html>
